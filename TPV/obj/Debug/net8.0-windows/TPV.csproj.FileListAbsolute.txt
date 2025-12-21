@@ -36,3 +36,11 @@ C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\refint\TPV.dll
 C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.pdb
 C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.genruntimeconfig.cache
 C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\ref\TPV.dll
+C:\Users\aranz\source\repos\TPV\TPV\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.SukaldariMenua.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.ZerbitzariMenua.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.ErreserbaGestionatu.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.ErreserbaSortu.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.ZerbitzuaHasi.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.Properties.Resources.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.ZerbitzuaKudeatu.resources
