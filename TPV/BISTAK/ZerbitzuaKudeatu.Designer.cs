@@ -5,75 +5,69 @@ namespace TPV.BISTAK
 {
     partial class ZerbitzuaKudeatu
     {
-        private System.ComponentModel.IContainer components = null;
-        private TableLayoutPanel layoutNagusia;
-        private Panel headerPanel;
-        private Label lblTitulo;
-        private FlowLayoutPanel categoriasPanel;
+        private System.ComponentModel.IContainer osagaiak = null;
+        private TableLayoutPanel nagusiaLayout;
+        private Panel buruaPanel;
+        private Label lblTitulua;
+        private FlowLayoutPanel kategoriakPanel;
         private Button btnEskaeraAmaitu;
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && components != null) components.Dispose();
+            if (disposing && osagaiak != null) osagaiak.Dispose();
             base.Dispose(disposing);
         }
 
         private void InitializeComponent()
         {
-            layoutNagusia = new TableLayoutPanel();
-            headerPanel = new Panel();
-            lblTitulo = new Label();
-            categoriasPanel = new FlowLayoutPanel();
+            nagusiaLayout = new TableLayoutPanel();
+            buruaPanel = new Panel();
+            lblTitulua = new Label();
+            kategoriakPanel = new FlowLayoutPanel();
             btnEskaeraAmaitu = new Button();
 
-            layoutNagusia.SuspendLayout();
-            headerPanel.SuspendLayout();
+            nagusiaLayout.SuspendLayout();
+            buruaPanel.SuspendLayout();
             SuspendLayout();
 
-            // layoutNagusia
-            layoutNagusia.ColumnCount = 1;
-            layoutNagusia.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            layoutNagusia.Controls.Add(headerPanel, 0, 0);
-            layoutNagusia.Controls.Add(categoriasPanel, 0, 1);
-            layoutNagusia.Controls.Add(btnEskaeraAmaitu, 0, 2);
-            layoutNagusia.Dock = DockStyle.Fill;
-            layoutNagusia.RowCount = 3;
-            layoutNagusia.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
-            layoutNagusia.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            layoutNagusia.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            nagusiaLayout.ColumnCount = 1;
+            nagusiaLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            nagusiaLayout.Controls.Add(buruaPanel, 0, 0);
+            nagusiaLayout.Controls.Add(kategoriakPanel, 0, 1);
+            nagusiaLayout.Controls.Add(btnEskaeraAmaitu, 0, 2);
+            nagusiaLayout.Dock = DockStyle.Fill;
+            nagusiaLayout.RowCount = 3;
+            nagusiaLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
+            nagusiaLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            nagusiaLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
 
-            // headerPanel
-            headerPanel.BackColor = Color.Black;
-            headerPanel.Controls.Add(lblTitulo);
-            headerPanel.Dock = DockStyle.Fill;
+            buruaPanel.BackColor = Color.Black;
+            buruaPanel.Controls.Add(lblTitulua);
+            buruaPanel.Dock = DockStyle.Fill;
 
-            // lblTitulo
-            lblTitulo.Dock = DockStyle.Fill;
-            lblTitulo.ForeColor = Color.Goldenrod;
-            lblTitulo.Text = "Zerbitzua Kudeatu";
-            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTitulua.Dock = DockStyle.Fill;
+            lblTitulua.ForeColor = Color.Goldenrod;
+            lblTitulua.Text = "Zerbitzua Kudeatu";
+            lblTitulua.TextAlign = ContentAlignment.MiddleCenter;
 
-            // categoriasPanel
-            categoriasPanel.Dock = DockStyle.Fill;
-            categoriasPanel.AutoScroll = true;
-            categoriasPanel.FlowDirection = FlowDirection.TopDown;
-            categoriasPanel.WrapContents = false;
+            kategoriakPanel.Dock = DockStyle.Fill;
+            kategoriakPanel.AutoScroll = true;
+            kategoriakPanel.FlowDirection = FlowDirection.TopDown;
+            kategoriakPanel.WrapContents = false;
 
-            // btnEskaeraAmaitu
             btnEskaeraAmaitu.Text = "Eskaera amaitu";
             btnEskaeraAmaitu.BackColor = Color.Goldenrod;
             btnEskaeraAmaitu.ForeColor = Color.Black;
             btnEskaeraAmaitu.FlatStyle = FlatStyle.Flat;
             btnEskaeraAmaitu.Dock = DockStyle.Fill;
 
-            // Form
             ClientSize = new Size(1000, 700);
-            Controls.Add(layoutNagusia);
+            Controls.Add(nagusiaLayout);
             Text = "Zerbitzua Kudeatu";
             WindowState = FormWindowState.Maximized;
 
-            layoutNagusia.ResumeLayout(false);
-            headerPanel.ResumeLayout(false);
+            nagusiaLayout.ResumeLayout(false);
+            buruaPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
     }

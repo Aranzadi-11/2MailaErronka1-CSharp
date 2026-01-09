@@ -12,7 +12,7 @@ namespace TPV.BISTAK
     public partial class ZerbitzuaHasi : Form
     {
         private readonly HttpClient http;
-        private List<Erreserba> erreserbak;
+        private List<Erreserbak> erreserbak;
         private readonly int langileId;
 
         public ZerbitzuaHasi(int langileIdPasatua)
@@ -29,14 +29,15 @@ namespace TPV.BISTAK
             try
             {
                 string gaur = DateTime.Now.ToString("yyyy-MM-dd");
-                erreserbak = await http.GetFromJsonAsync<List<Erreserba>>("https://localhost:7236/api/Erreserbak");
 
-                var gaurkoak = erreserbak
-                    .Where(e => e.erreserbaData.ToString("yyyy-MM-dd") == gaur)
-                    .OrderBy(e => e.erreserbaData)
+                var denak = await http.GetFromJsonAsync<List<Erreserbak>>("https://localhost:7236/api/Erreserbak");
+
+                erreserbak = denak
+                    .Where(e => e.ErreserbaData.HasValue && e.ErreserbaData.Value.ToString("yyyy-MM-dd") == gaur)
+                    .OrderBy(e => e.ErreserbaData)
                     .ToList();
 
-                AzalduErreserbak(gaurkoak);
+                AzalduErreserbak(erreserbak);
             }
             catch (Exception ex)
             {
@@ -44,7 +45,7 @@ namespace TPV.BISTAK
             }
         }
 
-        private void AzalduErreserbak(List<Erreserba> lista)
+        private void AzalduErreserbak(List<Erreserbak> lista)
         {
             erreserbakPanel.Controls.Clear();
 
@@ -52,7 +53,7 @@ namespace TPV.BISTAK
             {
                 var lbl = new Label
                 {
-                    Text = "Ez dago erreserbarik aukeratutako orduan.",
+                    Text = "Ez dago erreserbarik.",
                     AutoSize = true,
                     Dock = DockStyle.Top
                 };
@@ -66,13 +67,13 @@ namespace TPV.BISTAK
                 {
                     Width = 300,
                     Height = 80,
-                    Text = $"{e.izena}\n{e.erreserbaData:HH:mm} - {e.pertsonaKop} pertsona",
+                    Text = $"{e.Izena}\n{e.ErreserbaData:HH:mm} - {e.PertsonaKop} pertsona",
                     Tag = e
                 };
                 btn.Click += (s, a) =>
                 {
-                    var erreserbaSel = (Erreserba)btn.Tag;
-                    var kudeatu = new ZerbitzuaKudeatu(erreserbaSel.id, langileId, erreserbaSel.mahaiaId);
+                    var erreserbaSel = (Erreserbak)btn.Tag;
+                    var kudeatu = new ZerbitzuaKudeatu(erreserbaSel.Id, langileId, erreserbaSel.MahaiaId);
                     kudeatu.Show();
                 };
                 erreserbakPanel.Controls.Add(btn);
@@ -100,7 +101,7 @@ namespace TPV.BISTAK
 
             var filtratuta = auk == "Guztiak"
                 ? erreserbak
-                : erreserbak.Where(x => x.erreserbaData.ToString("HH:mm") == auk).ToList();
+                : erreserbak.Where(x => x.ErreserbaData.HasValue && x.ErreserbaData.Value.ToString("HH:mm") == auk).ToList();
 
             AzalduErreserbak(filtratuta);
         }

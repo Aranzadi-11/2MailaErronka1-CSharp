@@ -2,7 +2,7 @@
 {
     public class Kategoria
     {
-        public int id { get; set; }
-        public string izena { get; set; }
+        public int Id { get; set; }
+        public string Izena { get; set; }
     }
 }

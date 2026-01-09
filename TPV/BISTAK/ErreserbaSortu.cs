@@ -11,15 +11,15 @@ namespace TPV
 {
     public partial class ErreserbaSortu : Form
     {
-        private List<Mahaia> mahaiaLista;
-        private List<Erreserba> erreserbaLista;
+        private List<Mahaiak> mahaiaLista;
+        private List<Erreserbak> erreserbaLista;
         private readonly HttpClient client = new HttpClient();
 
         public ErreserbaSortu()
         {
             InitializeComponent();
-            mahaiaLista = new List<Mahaia>();
-            erreserbaLista = new List<Erreserba>();
+            mahaiaLista = new List<Mahaiak>();
+            erreserbaLista = new List<Erreserbak>();
             datePicker.MinDate = DateTime.Today;
             HasieratuHautaketak();
         }
@@ -65,12 +65,12 @@ namespace TPV
             mesasPanel.Controls.Clear();
 
             var erreserbakHautatutako = erreserbaLista
-                .Where(r => r.erreserbaData.ToString("yyyy-MM-dd") == data &&
-                            r.erreserbaData.ToString("HH:mm") == ordua)
-                .Select(r => r.mahaiaId)
+                .Where(r => r.ErreserbaData.HasValue && r.ErreserbaData.Value.ToString("yyyy-MM-dd") == data &&
+                            r.ErreserbaData.Value.ToString("HH:mm") == ordua)
+                .Select(r => r.MahaiaId)
                 .ToList();
 
-            var mahaiLibre = mahaiaLista.Where(m => !erreserbakHautatutako.Contains(m.id)).ToList();
+            var mahaiLibre = mahaiaLista.Where(m => !erreserbakHautatutako.Contains(m.Id)).ToList();
 
             if (!mahaiLibre.Any())
             {
@@ -85,12 +85,12 @@ namespace TPV
                 {
                     Width = 150,
                     Height = 150,
-                    Text = $"Mahaia: {m.id}\nPertsonak: {m.edukiera}",
+                    Text = $"Mahaia: {m.Id}\nPertsonak: {m.Edukiera}",
                     Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold),
                     TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
                     FlatStyle = FlatStyle.Flat,
                     ForeColor = System.Drawing.Color.White,
-                    BackColor = m.edukiera switch
+                    BackColor = m.Edukiera switch
                     {
                         2 => System.Drawing.Color.FromArgb(52, 152, 219),
                         4 => System.Drawing.Color.FromArgb(46, 204, 113),
@@ -106,14 +106,14 @@ namespace TPV
             }
         }
 
-        private void IrekiErreserbaLeihoa(Mahaia mahaia)
+        private void IrekiErreserbaLeihoa(Mahaiak mahaia)
         {
             Panel fondoa = DiseinuErreserbaLeihoa(mahaia);
             Controls.Add(fondoa);
             fondoa.BringToFront();
         }
 
-        private Panel DiseinuErreserbaLeihoa(Mahaia mahaia)
+        private Panel DiseinuErreserbaLeihoa(Mahaiak mahaia)
         {
             Panel fondoa = new Panel
             {
@@ -132,7 +132,7 @@ namespace TPV
 
             Label lblTit = new Label
             {
-                Text = $"Erreserba — Mahaia {mahaia.id}",
+                Text = $"Erreserba — Mahaia {mahaia.Id}",
                 ForeColor = System.Drawing.Color.Goldenrod,
                 Dock = DockStyle.Top,
                 Height = 50,
@@ -144,7 +144,7 @@ namespace TPV
             TextBox txtIzena = new TextBox { PlaceholderText = "Izena", Width = 350, Top = 60, Left = 25 };
             TextBox txtTelefonoa = new TextBox { PlaceholderText = "Telefonoa", Width = 350, Top = 100, Left = 25 };
             ComboBox cmbPertsonaKop = new ComboBox { Width = 350, Top = 140, Left = 25, DropDownStyle = ComboBoxStyle.DropDownList };
-            for (int i = 1; i <= mahaia.edukiera; i++) cmbPertsonaKop.Items.Add(i);
+            for (int i = 1; i <= mahaia.Edukiera; i++) cmbPertsonaKop.Items.Add(i);
             cmbPertsonaKop.SelectedIndex = 0;
             TextBox txtOharrak = new TextBox { PlaceholderText = "Oharrak (aukerakoa)", Width = 350, Top = 180, Left = 25, Height = 60, Multiline = true };
 
@@ -191,7 +191,7 @@ namespace TPV
 
                 var newRes = new
                 {
-                    mahaiaId = mahaia.id,
+                    mahaiaId = mahaia.Id,
                     izena = txtIzena.Text,
                     telefonoa = tel,
                     erreserbaData = erreserbaData,
@@ -227,13 +227,13 @@ namespace TPV
 
         private async Task LortuMahaiaak()
         {
-            try { mahaiaLista = await client.GetFromJsonAsync<List<Mahaia>>("https://localhost:7236/api/Mahaiak"); }
+            try { mahaiaLista = await client.GetFromJsonAsync<List<Mahaiak>>("https://localhost:7236/api/Mahaiak"); }
             catch { MessageBox.Show("Errorea mahaien API-an."); }
         }
 
         private async Task LortuErreserbak()
         {
-            try { erreserbaLista = await client.GetFromJsonAsync<List<Erreserba>>("https://localhost:7236/api/Erreserbak"); }
+            try { erreserbaLista = await client.GetFromJsonAsync<List<Erreserbak>>("https://localhost:7236/api/Erreserbak"); }
             catch { MessageBox.Show("Errorea erreserben API-an."); }
         }
 

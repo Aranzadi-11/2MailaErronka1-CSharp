@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace TPV.MODELOAK
 {
-    public class Mahaia
+    public class Mahaiak
     {
-        public int id { get; set; }
-        public int edukiera { get; set; }
+        public virtual int Id { get; set; }
+        public virtual int MahaiaZbk { get; set; }
+        public virtual int Edukiera { get; set; }
+        public virtual string? Egoera { get; set; } = "Libre";
     }
 }

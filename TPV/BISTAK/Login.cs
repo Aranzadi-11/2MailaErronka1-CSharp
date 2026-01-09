@@ -53,7 +53,7 @@ namespace TPV
                 {
                     if (langile.Aktibo == "Bai")
                     {
-                        int langileId = langile.LangileId;
+                        int langileId = langile.Id;
 
                         if (langile.RolaId == 1)
                         {

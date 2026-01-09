@@ -3,32 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\aranz\\source\\repos\\TPV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\zerbitzuahasi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\zerbitzuahasi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\zerbitzuakudeatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\zerbitzuakudeatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\erreserbagestionatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\erreserbagestionatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\zerbitzarimenua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\zerbitzarimenua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\zerbitzuahasi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\zerbitzuahasi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\modeloak\\langileak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\modeloak\\langileak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,86 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ZerbitzuaHasi.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuaHasi.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ZerbitzuaHasi.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuaHasi.cs [Dise\u00F1o]",
-              "RelativeToolTip": "TPV\\BISTAK\\ZerbitzuaHasi.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T18:20:06.89Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ErreserbaGestionatu.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ErreserbaGestionatu.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ErreserbaGestionatu.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ErreserbaGestionatu.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\ErreserbaGestionatu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T17:54:28.579Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ZerbitzariMenua.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzariMenua.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ZerbitzariMenua.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzariMenua.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\ZerbitzariMenua.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T17:52:13.544Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Langileak.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\MODELOAK\\Langileak.cs",
-              "RelativeDocumentMoniker": "TPV\\MODELOAK\\Langileak.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\MODELOAK\\Langileak.cs",
-              "RelativeToolTip": "TPV\\MODELOAK\\Langileak.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T17:49:15.433Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\Login.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\Login.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\Login.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\Login.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAewDcAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T17:45:37.007Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ZerbitzuaHasi.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuaHasi.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ZerbitzuaHasi.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuaHasi.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\ZerbitzuaHasi.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAuwGwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T17:39:32.108Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "ZerbitzuaKudeatu.cs",
               "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuaKudeatu.cs",
               "RelativeDocumentMoniker": "TPV\\BISTAK\\ZerbitzuaKudeatu.cs",
               "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuaKudeatu.cs",
               "RelativeToolTip": "TPV\\BISTAK\\ZerbitzuaKudeatu.cs",
-              "ViewState": "AgIAANYAAAAAAAAAAAAuwOUAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAUwP4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T15:44:53.422Z"
+              "WhenOpened": "2026-01-08T13:49:01.39Z",
+              "EditorCaption": ""
             }
           ]
         }
