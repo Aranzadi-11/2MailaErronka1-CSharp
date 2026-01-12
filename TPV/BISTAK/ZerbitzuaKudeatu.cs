@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TPV.DTOak;
 using TPV.MODELOAK;
 
 namespace TPV.BISTAK
@@ -190,65 +191,53 @@ namespace TPV.BISTAK
 
             return max;
         }
-
         private async void Amaitu(object sender, EventArgs e)
         {
-            await StockEgiaztatu();
-
             if (aukerak.Values.All(v => v == 0))
             {
                 MessageBox.Show("Ez duzu ezer eskatu.");
                 return;
             }
 
-            decimal guztira = 0;
-
-            foreach (var a in aukerak.Where(x => x.Value > 0))
-            {
-                var p = platerak.First(x => x.Id == a.Key);
-                guztira += p.Prezioa * a.Value;
-            }
-
-            var zerbitzua = new Zerbitzuak
+            var eskaria = new ZerbitzuaEskariaDto
             {
                 LangileId = langileId,
                 MahaiaId = mahaiaId,
-                EskaeraData = DateTime.Now,
-                Egoera = "Itxaropean",
-                Guztira = guztira
+                Platerak = aukerak
+                    .Where(x => x.Value > 0)
+                    .Select(x => new PlateraEskariaDto
+                    {
+                        PlateraId = x.Key,
+                        Kantitatea = x.Value
+                    })
+                    .ToList()
             };
 
-            var res = await bezeroa.PostAsJsonAsync("https://localhost:7236/api/Zerbitzuak", zerbitzua);
+            var res = await bezeroa.PostAsJsonAsync(
+                "https://localhost:7236/api/Zerbitzuak/egin",
+                eskaria
+            );
 
-            if (!res.IsSuccessStatusCode)
+            var emaitza = await res.Content.ReadFromJsonAsync<ZerbitzuaEmaitzaDto>();
+
+            if (!emaitza.Ondo)
             {
-                MessageBox.Show("Errorea zerbitzua sortzean.");
+                var mezua = string.Join(
+                    "\n",
+                    emaitza.Erroreak.Select(e => $"{e.PlateraIzena} ez dago eskuragarri")
+                );
+
+                MessageBox.Show("Eskaera ezin izan da egin:\n" + mezua);
+                await StockEgiaztatu();
                 return;
             }
 
-            var sortua = await res.Content.ReadFromJsonAsync<Zerbitzuak>();
-            int zerbitzuId = sortua.Id;
-
-            foreach (var a in aukerak.Where(x => x.Value > 0))
-            {
-                var p = platerak.First(x => x.Id == a.Key);
-
-                var xehe = new ZerbitzuXehetasunak
-                {
-                    ZerbitzuaId = zerbitzuId,
-                    PlateraId = p.Id,
-                    Kantitatea = a.Value,
-                    PrezioUnitarioa = p.Prezioa
-                };
-
-                await bezeroa.PostAsJsonAsync(
-                    "https://localhost:7236/api/ZerbitzuXehetasunak",
-                    xehe
-                );
-            }
-
-            MessageBox.Show("Eskaera ondo gorde da!");
+            MessageBox.Show("Eskaera ondo egin da!");
             Close();
         }
+
+
     }
+
 }
+
