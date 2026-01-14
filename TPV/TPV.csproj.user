@@ -19,8 +19,5 @@
     <Compile Update="BISTAK\ZerbitzuaHasi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="BISTAK\ZerbitzuaKudeatu.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

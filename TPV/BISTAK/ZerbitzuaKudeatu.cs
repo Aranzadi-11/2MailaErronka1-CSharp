@@ -11,6 +11,12 @@ using TPV.MODELOAK;
 
 namespace TPV.BISTAK
 {
+    public class PlaterPrevioDto
+    {
+        public int PlateraId { get; set; }
+        public int Kantitatea { get; set; }
+    }
+
     public partial class ZerbitzuaKudeatu : Form
     {
         private readonly HttpClient bezeroa;
@@ -45,6 +51,19 @@ namespace TPV.BISTAK
             inbentarioa = await bezeroa.GetFromJsonAsync<List<Inbentarioa>>("https://localhost:7236/api/Inbentarioa");
             kategoriak = await bezeroa.GetFromJsonAsync<List<Kategoria>>("https://localhost:7236/api/Kategoria");
 
+            try
+            {
+                var prevPlaterak = await bezeroa.GetFromJsonAsync<List<PlaterPrevioDto>>(
+                    $"https://localhost:7236/api/Zerbitzuak/erreserba/{erreserbaId}/platerak"
+                );
+
+                foreach (var p in prevPlaterak)
+                {
+                    aukerak[p.PlateraId] = p.Kantitatea;
+                }
+            }
+            catch { }
+
             KargatuPlaterak();
             await StockEgiaztatu();
         }
@@ -66,8 +85,8 @@ namespace TPV.BISTAK
 
                 int max = GehienezkoKopurua(p);
 
-                if (aukerak[p.Id] > max)
-                    aukerak[p.Id] = max;
+                if (!aukerak.ContainsKey(p.Id)) aukerak[p.Id] = 0;
+                if (aukerak[p.Id] > max) aukerak[p.Id] = max;
 
                 txt.Text = aukerak[p.Id].ToString();
                 btnPlus.Enabled = aukerak[p.Id] < max;
@@ -138,7 +157,13 @@ namespace TPV.BISTAK
                     };
 
                     var btnMinus = new Button { Text = "-", Width = 50, Name = "btnMinus" };
-                    var txtKop = new Label { Text = "0", Width = 50, TextAlign = ContentAlignment.MiddleCenter, Name = "txtKop" };
+                    var txtKop = new Label
+                    {
+                        Text = aukerak.ContainsKey(p.Id) ? aukerak[p.Id].ToString() : "0",
+                        Width = 50,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Name = "txtKop"
+                    };
                     var btnPlus = new Button { Text = "+", Width = 50, Name = "btnPlus" };
 
                     pnlKontrol.Controls.Add(btnMinus);
@@ -149,7 +174,7 @@ namespace TPV.BISTAK
                     pnl.Controls.Add(lblPrezio);
                     pnl.Controls.Add(lblIzena);
 
-                    aukerak[p.Id] = 0;
+                    if (!aukerak.ContainsKey(p.Id)) aukerak[p.Id] = 0;
                     panelak[p.Id] = pnl;
 
                     btnPlus.Click += async (_, __) =>
@@ -191,6 +216,7 @@ namespace TPV.BISTAK
 
             return max;
         }
+
         private async void Amaitu(object sender, EventArgs e)
         {
             if (aukerak.Values.All(v => v == 0))
@@ -203,6 +229,7 @@ namespace TPV.BISTAK
             {
                 LangileId = langileId,
                 MahaiaId = mahaiaId,
+                ErreserbaId = erreserbaId,
                 Platerak = aukerak
                     .Where(x => x.Value > 0)
                     .Select(x => new PlateraEskariaDto
@@ -235,9 +262,5 @@ namespace TPV.BISTAK
             MessageBox.Show("Eskaera ondo egin da!");
             Close();
         }
-
-
     }
-
 }
-

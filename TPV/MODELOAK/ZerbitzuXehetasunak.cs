@@ -7,5 +7,6 @@
         public virtual int PlateraId { get; set; }
         public virtual int Kantitatea { get; set; }
         public virtual decimal PrezioUnitarioa { get; set; }
+        public virtual Boolean Zerbitzatuta { get; set; }
     }
 }

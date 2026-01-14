@@ -43,4 +43,4 @@ C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.Erreserb
 C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.ErreserbaSortu.resources
 C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.ZerbitzuaHasi.resources
 C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.Properties.Resources.resources
-C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.ZerbitzuaKudeatu.resources
+C:\Users\aranz\source\repos\TPV\TPV\obj\Debug\net8.0-windows\TPV.BISTAK.PlaterPrevioDto.resources
