@@ -62,6 +62,7 @@ namespace TPV.BISTAK
             btnEskaeraAmaitu.Dock = DockStyle.Fill;
 
             ClientSize = new Size(1000, 700);
+            MinimumSize = new Size(900, 600);
             Controls.Add(nagusiaLayout);
             Text = "Zerbitzua Kudeatu";
             WindowState = FormWindowState.Maximized;

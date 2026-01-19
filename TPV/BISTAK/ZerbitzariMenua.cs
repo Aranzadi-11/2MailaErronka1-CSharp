@@ -23,7 +23,7 @@ namespace TPV
 
             btnErreserbaGestionatu.Click += (s, e) =>
             {
-                using (ErreserbaGestionatu gestionatu = new ErreserbaGestionatu())
+                using (ErreserbaGestionatu gestionatu = new ErreserbaGestionatu(langileId))
                 {
                     gestionatu.ShowDialog();
                 }

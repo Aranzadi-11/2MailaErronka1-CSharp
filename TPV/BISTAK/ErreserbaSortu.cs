@@ -65,7 +65,8 @@ namespace TPV
             mesasPanel.Controls.Clear();
 
             var erreserbakHautatutako = erreserbaLista
-                .Where(r => r.ErreserbaData.HasValue && r.ErreserbaData.Value.ToString("yyyy-MM-dd") == data &&
+                .Where(r => r.ErreserbaData.HasValue &&
+                            r.ErreserbaData.Value.ToString("yyyy-MM-dd") == data &&
                             r.ErreserbaData.Value.ToString("HH:mm") == ordua)
                 .Select(r => r.MahaiaId)
                 .ToList();
@@ -100,7 +101,6 @@ namespace TPV
                     },
                     Tag = m
                 };
-
                 btn.Click += (s, e) => IrekiErreserbaLeihoa(m);
                 mesasPanel.Controls.Add(btn);
             }
@@ -127,6 +127,7 @@ namespace TPV
                 Height = 350,
                 BackColor = System.Drawing.Color.Black
             };
+
             popup.Left = (Width - popup.Width) / 2;
             popup.Top = (Height - popup.Height) / 2;
 
@@ -144,9 +145,20 @@ namespace TPV
             TextBox txtIzena = new TextBox { PlaceholderText = "Izena", Width = 350, Top = 60, Left = 25 };
             TextBox txtTelefonoa = new TextBox { PlaceholderText = "Telefonoa", Width = 350, Top = 100, Left = 25 };
             ComboBox cmbPertsonaKop = new ComboBox { Width = 350, Top = 140, Left = 25, DropDownStyle = ComboBoxStyle.DropDownList };
-            for (int i = 1; i <= mahaia.Edukiera; i++) cmbPertsonaKop.Items.Add(i);
+
+            for (int i = 1; i <= mahaia.Edukiera; i++)
+                cmbPertsonaKop.Items.Add(i);
             cmbPertsonaKop.SelectedIndex = 0;
-            TextBox txtOharrak = new TextBox { PlaceholderText = "Oharrak (aukerakoa)", Width = 350, Top = 180, Left = 25, Height = 60, Multiline = true };
+
+            TextBox txtOharrak = new TextBox
+            {
+                PlaceholderText = "Oharrak (aukerakoa)",
+                Width = 350,
+                Top = 180,
+                Left = 25,
+                Height = 60,
+                Multiline = true
+            };
 
             Button btnGorde = new Button
             {
@@ -184,8 +196,16 @@ namespace TPV
 
             btnGorde.Click += async (s, e) =>
             {
-                if (string.IsNullOrWhiteSpace(txtIzena.Text)) { MessageBox.Show("Izena bete behar da."); return; }
-                if (!long.TryParse(txtTelefonoa.Text, out long tel) || txtTelefonoa.Text.Length < 6) { MessageBox.Show("Telefonoa ez da baliozkoa."); return; }
+                if (string.IsNullOrWhiteSpace(txtIzena.Text))
+                {
+                    MessageBox.Show("Izena bete behar da.");
+                    return;
+                }
+                if (!long.TryParse(txtTelefonoa.Text, out long tel) || txtTelefonoa.Text.Length < 6)
+                {
+                    MessageBox.Show("Telefonoa ez da baliozkoa.");
+                    return;
+                }
 
                 DateTime erreserbaData = datePicker.Value.Date + TimeSpan.Parse(hourPicker.SelectedItem.ToString());
 
@@ -210,10 +230,8 @@ namespace TPV
                     }
 
                     MessageBox.Show("Erreserba ondo gorde da!");
-
                     await LortuErreserbak();
                     await KargatuMahaiak();
-
                     Controls.Remove(fondoa);
                 }
                 catch (Exception ex)
@@ -227,14 +245,26 @@ namespace TPV
 
         private async Task LortuMahaiaak()
         {
-            try { mahaiaLista = await client.GetFromJsonAsync<List<Mahaiak>>("https://localhost:7236/api/Mahaiak"); }
-            catch { MessageBox.Show("Errorea mahaien API-an."); }
+            try
+            {
+                mahaiaLista = await client.GetFromJsonAsync<List<Mahaiak>>("https://localhost:7236/api/Mahaiak");
+            }
+            catch
+            {
+                MessageBox.Show("Errorea mahaien API-an.");
+            }
         }
 
         private async Task LortuErreserbak()
         {
-            try { erreserbaLista = await client.GetFromJsonAsync<List<Erreserbak>>("https://localhost:7236/api/Erreserbak"); }
-            catch { MessageBox.Show("Errorea erreserben API-an."); }
+            try
+            {
+                erreserbaLista = await client.GetFromJsonAsync<List<Erreserbak>>("https://localhost:7236/api/Erreserbak");
+            }
+            catch
+            {
+                MessageBox.Show("Errorea erreserben API-an.");
+            }
         }
 
         private async void btnBilatu_Click(object sender, EventArgs e)

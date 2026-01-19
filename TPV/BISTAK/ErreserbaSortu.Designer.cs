@@ -19,7 +19,8 @@ namespace TPV
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null)) components.Dispose();
+            if (disposing && (components != null))
+                components.Dispose();
             base.Dispose(disposing);
         }
 
@@ -34,14 +35,13 @@ namespace TPV
             btnBilatu = new Button();
             mesasPanel = new FlowLayoutPanel();
             lblMensaje = new Label();
+
             layoutNagusia.SuspendLayout();
             headerPanel.SuspendLayout();
             filtroLayout.SuspendLayout();
             mesasPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // layoutNagusia
-            // 
+
             layoutNagusia.ColumnCount = 1;
             layoutNagusia.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             layoutNagusia.Controls.Add(headerPanel, 0, 0);
@@ -56,9 +56,7 @@ namespace TPV
             layoutNagusia.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             layoutNagusia.Size = new Size(782, 553);
             layoutNagusia.TabIndex = 0;
-            // 
-            // headerPanel
-            // 
+
             headerPanel.BackColor = Color.Black;
             headerPanel.Controls.Add(lblTitulo);
             headerPanel.Dock = DockStyle.Fill;
@@ -66,9 +64,7 @@ namespace TPV
             headerPanel.Name = "headerPanel";
             headerPanel.Size = new Size(776, 84);
             headerPanel.TabIndex = 0;
-            // 
-            // lblTitulo
-            // 
+
             lblTitulo.Dock = DockStyle.Fill;
             lblTitulo.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblTitulo.ForeColor = Color.Goldenrod;
@@ -78,9 +74,7 @@ namespace TPV
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Erreserba Sortu";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // filtroLayout
-            // 
+
             filtroLayout.ColumnCount = 3;
             filtroLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             filtroLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
@@ -94,9 +88,7 @@ namespace TPV
             filtroLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             filtroLayout.Size = new Size(776, 64);
             filtroLayout.TabIndex = 1;
-            // 
-            // datePicker
-            // 
+
             datePicker.CustomFormat = "yyyy-MM-dd";
             datePicker.Dock = DockStyle.Fill;
             datePicker.Format = DateTimePickerFormat.Custom;
@@ -104,18 +96,14 @@ namespace TPV
             datePicker.Name = "datePicker";
             datePicker.Size = new Size(304, 27);
             datePicker.TabIndex = 0;
-            // 
-            // hourPicker
-            // 
+
             hourPicker.Dock = DockStyle.Fill;
             hourPicker.DropDownStyle = ComboBoxStyle.DropDownList;
             hourPicker.Location = new Point(313, 3);
             hourPicker.Name = "hourPicker";
             hourPicker.Size = new Size(304, 28);
             hourPicker.TabIndex = 1;
-            // 
-            // btnBilatu
-            // 
+
             btnBilatu.BackColor = Color.Goldenrod;
             btnBilatu.Dock = DockStyle.Fill;
             btnBilatu.FlatAppearance.BorderSize = 0;
@@ -129,9 +117,7 @@ namespace TPV
             btnBilatu.Text = "Bilatu";
             btnBilatu.UseVisualStyleBackColor = false;
             btnBilatu.Click += btnBilatu_Click;
-            // 
-            // mesasPanel
-            // 
+
             mesasPanel.AutoScroll = true;
             mesasPanel.Controls.Add(lblMensaje);
             mesasPanel.Dock = DockStyle.Fill;
@@ -139,9 +125,7 @@ namespace TPV
             mesasPanel.Name = "mesasPanel";
             mesasPanel.Size = new Size(776, 387);
             mesasPanel.TabIndex = 2;
-            // 
-            // lblMensaje
-            // 
+
             lblMensaje.Dock = DockStyle.Fill;
             lblMensaje.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lblMensaje.Location = new Point(3, 0);
@@ -150,9 +134,7 @@ namespace TPV
             lblMensaje.TabIndex = 0;
             lblMensaje.Text = "Aukeratu ezazu egun eta ordu bat.";
             lblMensaje.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // ErreserbaSortu
-            // 
+
             BackColor = Color.White;
             ClientSize = new Size(782, 553);
             Controls.Add(layoutNagusia);
@@ -160,6 +142,7 @@ namespace TPV
             Name = "ErreserbaSortu";
             Text = "Erreserba Sortu";
             WindowState = FormWindowState.Maximized;
+
             layoutNagusia.ResumeLayout(false);
             headerPanel.ResumeLayout(false);
             filtroLayout.ResumeLayout(false);
