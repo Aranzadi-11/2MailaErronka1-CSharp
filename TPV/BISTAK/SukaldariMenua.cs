@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using TPV.BISTAK;
 
 namespace TPV
@@ -7,8 +6,7 @@ namespace TPV
     public partial class SukaldariMenua : Form
     {
         private readonly int langileId;
-        private bool itzuliDezake;
-        private Button btnItzuli;
+        private readonly bool itzuliDezake;
 
         public SukaldariMenua(int langileIdPasatua, bool itzuliDezake = false)
         {
@@ -16,24 +14,30 @@ namespace TPV
             langileId = langileIdPasatua;
             this.itzuliDezake = itzuliDezake;
 
-            if (itzuliDezake)
+            btnItzuli.Visible = itzuliDezake;
+            btnItzuli.Click += btnItzuli_Click;
+
+            btnInbentarioaKudeatu.Click += (s, e) =>
             {
-                btnItzuli = new Button
+                using (InbentarioaKudeatu inb = new InbentarioaKudeatu())
                 {
-                    Text = "Zerbitzari Menuara",
-                    Font = new Font("Segoe UI", 12F),
-                    Size = new Size(220, 40),
-                    Location = new Point(10, 10)
-                };
+                    inb.ShowDialog();
+                }
+            };
 
-                btnItzuli.Click += (s, e) =>
+            btnPlaterenEgoera.Click += (s, e) =>
+            {
+                using (ZerbitzuenEgoera pl = new ZerbitzuenEgoera())
                 {
-                    new ZerbitzariMenua(langileId).Show();
-                    this.Close();
-                };
+                    pl.ShowDialog();
+                }
+            };
+        }
 
-                Controls.Add(btnItzuli);
-            }
+        private void btnItzuli_Click(object sender, System.EventArgs e)
+        {
+            DialogResult = DialogResult.Retry;
+            Close();
         }
     }
 }

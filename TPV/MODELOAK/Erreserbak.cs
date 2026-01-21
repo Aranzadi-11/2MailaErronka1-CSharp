@@ -13,7 +13,7 @@ namespace TPV.MODELOAK
         public virtual int Telefonoa { get; set; }
         public virtual DateTime? ErreserbaData { get; set; }
         public virtual int? PertsonaKop { get; set; }
-        public virtual string Egoera { get; set; } = "Itxaropean";
+        public virtual string Egoera { get; set; } = "Eskatuta";
         public virtual string? Oharrak { get; set; }
     }
 }

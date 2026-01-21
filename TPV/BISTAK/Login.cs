@@ -17,9 +17,9 @@ namespace TPV
         public Login()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.MinimumSize = new Size(500, 420);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            StartPosition = FormStartPosition.CenterScreen;
+            MinimumSize = new Size(500, 420);
+            AutoScaleMode = AutoScaleMode.Font;
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -49,29 +49,7 @@ namespace TPV
                     l.Pasahitza == pasahitza
                 );
 
-                if (langile != null)
-                {
-                    if (langile.Aktibo == "Bai")
-                    {
-                        int langileId = langile.Id;
-
-                        if (langile.RolaId == 1)
-                        {
-                            new SukaldariMenua(langileId).ShowDialog();
-                        }
-                        else
-                        {
-                            new ZerbitzariMenua(langileId).ShowDialog();
-                        }
-
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erabiltzailea bajan emanda dago.\nJarri harremanetan administratzailearekin.", "Erabiltzailea ez aktiboa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
+                if (langile == null)
                 {
                     saiakerak--;
                     MessageBox.Show($"Erabiltzailea edo pasahitza okerra.\nSaiakerak: {saiakerak}", "Errorea", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -81,7 +59,58 @@ namespace TPV
                         MessageBox.Show("Saiakera kopurua gaindituta.\nAplikazioa itxiko da.", "Blokeoa", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         Application.Exit();
                     }
+
+                    return;
                 }
+
+                if (langile.Aktibo != "Bai")
+                {
+                    MessageBox.Show("Erabiltzailea bajan emanda dago.\nJarri harremanetan administratzailearekin.", "Erabiltzailea ez aktiboa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int langileId = langile.Id;
+                int rolaId = langile.RolaId ?? 0;
+
+                if (rolaId == 1)
+                {
+                    new SukaldariMenua(langileId).ShowDialog();
+                    Close();
+                    return;
+                }
+
+                if (rolaId == 2)
+                {
+                    new ZerbitzariMenua(langileId).ShowDialog();
+                    Close();
+                    return;
+                }
+
+                if (rolaId == 3 || rolaId == 4)
+                {
+                    bool sukaldariModuan = false;
+
+                    while (true)
+                    {
+                        DialogResult emaitza = !sukaldariModuan
+                            ? new ZerbitzariMenua(langileId, true).ShowDialog()
+                            : new SukaldariMenua(langileId, true).ShowDialog();
+
+                        if (emaitza == DialogResult.Retry)
+                        {
+                            sukaldariModuan = !sukaldariModuan;
+                            continue;
+                        }
+
+                        break;
+                    }
+
+                    Close();
+                    return;
+                }
+
+                new ZerbitzariMenua(langileId).ShowDialog();
+                Close();
             }
             catch (Exception ex)
             {

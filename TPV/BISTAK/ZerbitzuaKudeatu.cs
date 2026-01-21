@@ -19,7 +19,7 @@ namespace TPV.BISTAK
         private readonly int mahaiaId;
 
         private List<Platerak> platerak;
-        private List<PlaterenOsagaiak> platerenosagaiak;
+        private List<MODELOAK.PlaterenOsagaiak> platerenosagaiak;
         private List<Inbentarioa> inbentarioa;
         private List<Kategoria> kategoriak;
 
@@ -45,7 +45,7 @@ namespace TPV.BISTAK
         private async Task DenaKargatu()
         {
             platerak = await bezeroa.GetFromJsonAsync<List<Platerak>>("https://localhost:7236/api/Platerak");
-            platerenosagaiak = await bezeroa.GetFromJsonAsync<List<PlaterenOsagaiak>>("https://localhost:7236/api/PlaterenOsagaiak");
+            platerenosagaiak = await bezeroa.GetFromJsonAsync<List<MODELOAK.PlaterenOsagaiak>>("https://localhost:7236/api/PlaterenOsagaiak");
             inbentarioa = await bezeroa.GetFromJsonAsync<List<Inbentarioa>>("https://localhost:7236/api/Inbentarioa");
             kategoriak = await bezeroa.GetFromJsonAsync<List<Kategoria>>("https://localhost:7236/api/Kategoria");
 

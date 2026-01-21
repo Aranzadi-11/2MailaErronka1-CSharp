@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\aranz\\source\\repos\\TPV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\erreserbaeditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\erreserbaeditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\zerbitzuenegoera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\zerbitzuenegoera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\erreserbaeditatu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\erreserbaeditatu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\platerenosagaiakikusi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\platerenosagaiakikusi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ErreserbaEditatu.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ErreserbaEditatu.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ErreserbaEditatu.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ErreserbaEditatu.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\ErreserbaEditatu.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAmwAUBAAAAAAAAAAAAAA==",
+              "Title": "ZerbitzuenEgoera.cs",
+              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuenEgoera.cs",
+              "RelativeDocumentMoniker": "TPV\\BISTAK\\ZerbitzuenEgoera.cs",
+              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuenEgoera.cs",
+              "RelativeToolTip": "TPV\\BISTAK\\ZerbitzuenEgoera.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAMwHYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T13:22:49.555Z",
+              "WhenOpened": "2026-01-21T13:39:45.524Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ErreserbaEditatu.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ErreserbaEditatu.Designer.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ErreserbaEditatu.Designer.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ErreserbaEditatu.Designer.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\ErreserbaEditatu.Designer.cs",
-              "ViewState": "AgIAALoAAAAAAAAAAAAQwN4AAAAAAAAAAAAAAA==",
+              "Title": "PlaterenOsagaiakIkusi.cs",
+              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
+              "RelativeDocumentMoniker": "TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
+              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
+              "RelativeToolTip": "TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAcwBIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T12:55:40.189Z",
+              "WhenOpened": "2026-01-20T14:53:31.546Z",
               "EditorCaption": ""
             }
           ]

@@ -13,6 +13,7 @@ namespace TPV
         private Button btnErreserbaSortu;
         private Button btnErreserbaGestionatu;
         private Button btnZerbitzuaHasi;
+        private Button btnItzuli;
 
         protected override void Dispose(bool disposing)
         {
@@ -29,12 +30,24 @@ namespace TPV
             btnErreserbaSortu = new Button();
             btnErreserbaGestionatu = new Button();
             btnZerbitzuaHasi = new Button();
+            btnItzuli = new Button();
 
             SuspendLayout();
 
             headerPanel.BackColor = Color.Black;
             headerPanel.Dock = DockStyle.Top;
             headerPanel.Height = 90;
+            headerPanel.Controls.Add(btnItzuli);
+
+            btnItzuli.Text = "Sukaldari Menua";
+            btnItzuli.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnItzuli.Size = new Size(220, 45);
+            btnItzuli.Location = new Point(15, 22);
+            btnItzuli.BackColor = Color.Goldenrod;
+            btnItzuli.ForeColor = Color.Black;
+            btnItzuli.FlatStyle = FlatStyle.Flat;
+            btnItzuli.FlatAppearance.BorderSize = 0;
+            btnItzuli.Visible = false;
 
             layoutNagusia.Dock = DockStyle.Fill;
             layoutNagusia.RowCount = 2;
@@ -50,9 +63,9 @@ namespace TPV
             for (int i = 0; i < 5; i++)
                 botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
 
-            EstiloaEzarri(btnErreserbaSortu, "Erreserba Sortu");
-            EstiloaEzarri(btnErreserbaGestionatu, "Erreserba Gestionatu");
-            EstiloaEzarri(btnZerbitzuaHasi, "Zerbitzua Hasi");
+            EstiloaEzarri(btnErreserbaSortu, "Erreserba sortu");
+            EstiloaEzarri(btnErreserbaGestionatu, "Erreserbak kudeatu");
+            EstiloaEzarri(btnZerbitzuaHasi, "Zerbitzua hasi");
 
             botoiLayout.Controls.Add(btnErreserbaSortu, 1, 1);
             botoiLayout.Controls.Add(btnErreserbaGestionatu, 1, 2);
