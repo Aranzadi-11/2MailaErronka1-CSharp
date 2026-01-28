@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using TPV.BISTAK;
 
 namespace TPV
@@ -18,6 +17,8 @@ namespace TPV
             btnItzuli.Visible = itzuliDezake;
             btnItzuli.Click += btnItzuli_Click;
 
+            _ = TxataHasieratu();
+
             btnErreserbaSortu.Click += (s, e) =>
             {
                 using (ErreserbaSortu erreserba = new ErreserbaSortu())
@@ -28,9 +29,9 @@ namespace TPV
 
             btnErreserbaGestionatu.Click += (s, e) =>
             {
-                using (ErreserbaGestionatu gestionatu = new ErreserbaGestionatu(langileId))
+                using (ErreserbaGestionatu kudeatu = new ErreserbaGestionatu(langileId))
                 {
-                    gestionatu.ShowDialog();
+                    kudeatu.ShowDialog();
                 }
             };
 
@@ -41,6 +42,34 @@ namespace TPV
                     zerbitzua.ShowDialog();
                 }
             };
+
+            btnFakturaSortu.Click += (s, e) =>
+            {
+                using (FakturaSortu faktura = new FakturaSortu(langileId))
+                {
+                    faktura.ShowDialog();
+                }
+            };
+        }
+
+        async System.Threading.Tasks.Task TxataHasieratu()
+        {
+            if (SaioGlobala.RolaId == 1)
+            {
+                txatPanela.Visible = false;
+                return;
+            }
+
+            try
+            {
+                txatPanela.Visible = true;
+                await TxatBezeroa.Instantzia.KonektatuAsync("192.168.1.117", 5000, SaioGlobala.LangileId, SaioGlobala.RolaId, SaioGlobala.ErabiltzaileIzena, SaioGlobala.Tokena);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Txat konexio errorea", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txatPanela.Visible = false;
+            }
         }
 
         private void btnItzuli_Click(object sender, System.EventArgs e)

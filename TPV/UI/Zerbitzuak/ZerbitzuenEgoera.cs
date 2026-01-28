@@ -118,7 +118,6 @@ namespace TPV.BISTAK
             var lblData = SortuLbl("Eskaera data");
             var txtData = SortuTxt(z.EskaeraData?.ToString("yyyy-MM-dd HH:mm:ss") ?? "");
 
-
             var lblEgo = SortuLbl("Egoera");
             var txtEgo = SortuTxt(z.Egoera ?? "");
 
@@ -155,6 +154,8 @@ namespace TPV.BISTAK
                     leihoa.ShowDialog();
                 }
 
+                await KargatuDatuak();
+                await EguneratuZerbitzuarenEgoeraAmaituta(z.Id);
                 await KargatuDatuak();
             };
 
@@ -200,15 +201,13 @@ namespace TPV.BISTAK
         {
             try
             {
-                var egoeraBerria = z.Egoera == "Egiten" ? "Egiten" : "Egiten";
-
                 var body = new
                 {
                     langileId = z.LangileId,
                     mahaiaId = z.MahaiaId,
                     erreserbaId = z.ErreserbaId,
                     eskaeraData = z.EskaeraData,
-                    egoera = egoeraBerria,
+                    egoera = "Egiten",
                     guztira = z.Guztira
                 };
 
@@ -227,6 +226,38 @@ namespace TPV.BISTAK
             {
                 MessageBox.Show("Errorea: " + ex.Message);
                 return false;
+            }
+        }
+
+        private async Task EguneratuZerbitzuarenEgoeraAmaituta(int zerbitzuaId)
+        {
+            var xehe = xehetasunak
+                .Where(x => x.ZerbitzuaId == zerbitzuaId)
+                .ToList();
+
+            if (!xehe.Any()) return;
+
+            if (!xehe.All(x => x.Zerbitzatuta)) return;
+
+            var z = zerbitzuak.FirstOrDefault(x => x.Id == zerbitzuaId);
+            if (z == null) return;
+
+            try
+            {
+                var body = new
+                {
+                    langileId = z.LangileId,
+                    mahaiaId = z.MahaiaId,
+                    erreserbaId = z.ErreserbaId,
+                    eskaeraData = z.EskaeraData,
+                    egoera = "Zerbitzatuta",
+                    guztira = z.Guztira
+                };
+
+                await bezeroa.PutAsJsonAsync($"{ApiZerbitzuak}/{z.Id}", body);
+            }
+            catch
+            {
             }
         }
     }

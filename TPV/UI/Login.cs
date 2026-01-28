@@ -72,6 +72,8 @@ namespace TPV
                 int langileId = langile.Id;
                 int rolaId = langile.RolaId ?? 0;
 
+                SaioGlobala.Ezarri(langileId, rolaId, langile.Erabiltzailea);
+
                 if (rolaId == 1)
                 {
                     new SukaldariMenua(langileId).ShowDialog();

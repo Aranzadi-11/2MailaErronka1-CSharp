@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\aranz\\source\\repos\\TPV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\zerbitzuenegoera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\zerbitzuenegoera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\tpv.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\tpv.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\bistak\\platerenosagaiakikusi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\bistak\\platerenosagaiakikusi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\ui\\erreserbak\\erreserbaeditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\ui\\erreserbak\\erreserbaeditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ZerbitzuenEgoera.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuenEgoera.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\ZerbitzuenEgoera.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\ZerbitzuenEgoera.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\ZerbitzuenEgoera.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAMwHYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T13:39:45.524Z",
+              "Title": "TPV",
+              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\TPV.csproj",
+              "RelativeDocumentMoniker": "TPV\\TPV.csproj",
+              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\TPV.csproj",
+              "RelativeToolTip": "TPV\\TPV.csproj",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-27T12:15:17.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PlaterenOsagaiakIkusi.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
-              "RelativeDocumentMoniker": "TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
-              "RelativeToolTip": "TPV\\BISTAK\\PlaterenOsagaiakIkusi.cs",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAcwBIBAAAAAAAAAAAAAA==",
+              "Title": "ErreserbaEditatu.cs",
+              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "RelativeToolTip": "TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T14:53:31.546Z",
+              "WhenOpened": "2026-01-26T14:44:16.337Z",
               "EditorCaption": ""
             }
           ]

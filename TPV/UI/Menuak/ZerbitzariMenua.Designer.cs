@@ -4,15 +4,20 @@ using System.ComponentModel;
 
 namespace TPV
 {
-    partial class SukaldariMenua
+    partial class ZerbitzariMenua
     {
         private IContainer components = null;
         private TableLayoutPanel layoutNagusia;
         private TableLayoutPanel botoiLayout;
         private Panel headerPanel;
-        private Button btnInbentarioaKudeatu;
-        private Button btnPlaterenEgoera;
+        private Button btnErreserbaSortu;
+        private Button btnErreserbaGestionatu;
+        private Button btnZerbitzuaHasi;
+        private Button btnFakturaSortu;
         private Button btnItzuli;
+
+        private Panel txatPanela;
+        private TxatKontrola txatKontrola;
 
         protected override void Dispose(bool disposing)
         {
@@ -26,9 +31,14 @@ namespace TPV
             layoutNagusia = new TableLayoutPanel();
             botoiLayout = new TableLayoutPanel();
             headerPanel = new Panel();
-            btnInbentarioaKudeatu = new Button();
-            btnPlaterenEgoera = new Button();
+            btnErreserbaSortu = new Button();
+            btnErreserbaGestionatu = new Button();
+            btnZerbitzuaHasi = new Button();
+            btnFakturaSortu = new Button();
             btnItzuli = new Button();
+
+            txatPanela = new Panel();
+            txatKontrola = new TxatKontrola();
 
             SuspendLayout();
 
@@ -37,7 +47,7 @@ namespace TPV
             headerPanel.Height = 90;
             headerPanel.Controls.Add(btnItzuli);
 
-            btnItzuli.Text = "Zerbitzari Menua";
+            btnItzuli.Text = "Sukaldari Menua";
             btnItzuli.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnItzuli.Size = new Size(220, 45);
             btnItzuli.Location = new Point(15, 22);
@@ -54,28 +64,48 @@ namespace TPV
 
             botoiLayout.Dock = DockStyle.Fill;
             botoiLayout.ColumnCount = 3;
-            botoiLayout.RowCount = 5;
+            botoiLayout.RowCount = 6;
+
             botoiLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             botoiLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             botoiLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            for (int i = 0; i < 5; i++)
-                botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
 
-            EstiloaEzarri(btnInbentarioaKudeatu, "Inbentarioa kudeatu");
-            EstiloaEzarri(btnPlaterenEgoera, "Zerbitzuaren egoera");
+            botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            botoiLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
 
-            botoiLayout.Controls.Add(btnInbentarioaKudeatu, 1, 1);
-            botoiLayout.Controls.Add(btnPlaterenEgoera, 1, 2);
+            EstiloaEzarri(btnErreserbaSortu, "Erreserba sortu");
+            EstiloaEzarri(btnErreserbaGestionatu, "Erreserbak kudeatu");
+            EstiloaEzarri(btnZerbitzuaHasi, "Zerbitzua hasi");
+            EstiloaEzarri(btnFakturaSortu, "Faktura sortu");
+
+            botoiLayout.Controls.Add(btnErreserbaSortu, 1, 1);
+            botoiLayout.Controls.Add(btnErreserbaGestionatu, 1, 2);
+            botoiLayout.Controls.Add(btnZerbitzuaHasi, 1, 3);
+            botoiLayout.Controls.Add(btnFakturaSortu, 1, 4);
 
             layoutNagusia.Controls.Add(headerPanel, 0, 0);
             layoutNagusia.Controls.Add(botoiLayout, 0, 1);
 
+            txatPanela.Dock = DockStyle.Right;
+            txatPanela.Width = 420;
+            txatPanela.BackColor = Color.White;
+            txatPanela.Padding = new Padding(12);
+
+            txatKontrola.Dock = DockStyle.Fill;
+
+            txatPanela.Controls.Add(txatKontrola);
+
             Controls.Add(layoutNagusia);
+            Controls.Add(txatPanela);
 
             BackColor = Color.White;
             WindowState = FormWindowState.Maximized;
             MinimumSize = new Size(800, 600);
-            Text = "Sukaldari Menua";
+            Text = "Zerbitzari Menua";
 
             ResumeLayout(false);
         }

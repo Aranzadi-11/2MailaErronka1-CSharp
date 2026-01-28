@@ -17,6 +17,8 @@ namespace TPV
             btnItzuli.Visible = itzuliDezake;
             btnItzuli.Click += btnItzuli_Click;
 
+            _ = TxataHasieratu();
+
             btnInbentarioaKudeatu.Click += (s, e) =>
             {
                 using (InbentarioaKudeatu inb = new InbentarioaKudeatu())
@@ -32,6 +34,27 @@ namespace TPV
                     pl.ShowDialog();
                 }
             };
+        }
+
+        async System.Threading.Tasks.Task TxataHasieratu()
+        {
+            if (SaioGlobala.RolaId == 1)
+            {
+                txatPanela.Visible = false;
+                return;
+            }
+
+            try
+            {
+                txatPanela.Visible = true;
+                await TxatBezeroa.Instantzia.KonektatuAsync("192.168.1.117", 5000, SaioGlobala.LangileId, SaioGlobala.RolaId, SaioGlobala.ErabiltzaileIzena, SaioGlobala.Tokena);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Txat konexio errorea", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txatPanela.Visible = false;
+            }
+
         }
 
         private void btnItzuli_Click(object sender, System.EventArgs e)
