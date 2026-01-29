@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
@@ -10,12 +9,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TPV.MODELOAK;
-using PdfSharpCore.Pdf;
-using PdfSharpCore.Drawing;
-using TPV.DTOak;
-{
-    
-}
 
 namespace TPV.BISTAK
 {
@@ -96,7 +89,7 @@ namespace TPV.BISTAK
             {
                 Dock = DockStyle.Top,
                 Height = 45,
-                Text = "Ticket-a ireki",
+                Text = "Ticket-a deskargatu",
                 BackColor = Color.Goldenrod,
                 ForeColor = Color.Black,
                 FlatStyle = FlatStyle.Flat
@@ -114,7 +107,7 @@ namespace TPV.BISTAK
             };
             btnOrdaindu.FlatAppearance.BorderSize = 0;
 
-            btnTicketDeskargatu.Click += async (_, __) => await TicketSortuEtaIreki(z.Id);
+            btnTicketDeskargatu.Click += async (_, __) => await TicketDeskargatu(z.Id);
             btnOrdaindu.Click += async (_, __) => await OrdainduMarkatu(z.Id);
 
             txartela.Controls.Add(btnOrdaindu);
@@ -124,10 +117,10 @@ namespace TPV.BISTAK
             return txartela;
         }
 
-        private async Task TicketSortuEtaIreki(int zerbitzuId)
+        private async Task TicketDeskargatu(int zerbitzuId)
         {
             var erantzuna = MessageBox.Show(
-                "Zerbitzuaren ticket-a sortu eta irekiko da. Seguru?",
+                "Zerbitzuaren faktura deskargatuko da, zihur zaude hau egin nahi duzula?",
                 "Baieztatu",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
@@ -162,7 +155,7 @@ namespace TPV.BISTAK
 
                         platerMapa.TryGetValue(plateraId, out var p);
 
-                        return new TicketDTO
+                        return new TicketItem
                         {
                             PlateraId = plateraId,
                             Izena = p?.Izena ?? $"Platera {plateraId}",
@@ -174,27 +167,12 @@ namespace TPV.BISTAK
                     .ToList();
 
                 var mahaigaina = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                var karpetaNagusia = System.IO.Path.Combine(mahaigaina, "Ticket-ak");
-                var egunKarpeta = System.IO.Path.Combine(karpetaNagusia, DateTime.Now.ToString("dd-MM-yyyy"));
-                System.IO.Directory.CreateDirectory(egunKarpeta);
+                var fitxIzena = $"{DateTime.Now:HH.mm.ss-dd-MM-yyyy}-ID{zerbitzuId}.pdf";
+                var bidea = System.IO.Path.Combine(mahaigaina, fitxIzena);
 
-                var fitxIzena = $"ID{zerbitzuId}.pdf";
-                var bidea = System.IO.Path.Combine(egunKarpeta, fitxIzena);
+                SortuPdfTicket(bidea, zerbitzuId, itemak);
 
-                var modua = "Eskudirua";
-                decimal jasotakoa = 0m;
-
-                SortuPdfTicket(bidea, zerbitzuId, itemak, modua, jasotakoa);
-
-                try
-                {
-                    Process.Start(new ProcessStartInfo(bidea) { UseShellExecute = true });
-                }
-                catch
-                {
-                }
-
-                MessageBox.Show($"Ticket-a sortuta:\n{bidea}");
+                MessageBox.Show($"PDF-a sortuta:\n{bidea}");
             }
             catch (Exception ex)
             {
@@ -205,7 +183,7 @@ namespace TPV.BISTAK
         private async Task OrdainduMarkatu(int zerbitzuId)
         {
             var erantzuna = MessageBox.Show(
-                "Zerbitzua ordainduta bezala markatuko da. Seguru?",
+                "Zerbitzua ordainduta bezala markatuko da, seguru zaude zerbitzua ordaindu egin dela?",
                 "Baieztatu",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
@@ -259,163 +237,79 @@ namespace TPV.BISTAK
             }
         }
 
-        private void SortuPdfTicket(string bidea, int zerbitzuId, List<TicketDTO> itemak, string modua, decimal jasotakoa)
+        private void SortuPdfTicket(string bidea, int zerbitzuId, List<TicketItem> itemak)
         {
-            const string izenburua = "ABEJ JATETXEA";
-            const string cif = "CIF: P0801900B";
-            const string herria = "Madrid";
-            const string tel = "Tel: 666 777 888";
-
-            const decimal ivaTasa = 0.10m;
-
-            decimal subtotal = 0m;
-            var lineas = new List<(int kop, string prod, decimal ud, decimal tot)>();
-
-            foreach (var it in itemak)
-            {
-                var tot = it.Kantitatea * it.PrezioaUnitatea;
-                subtotal += tot;
-                lineas.Add((it.Kantitatea, it.Izena, it.PrezioaUnitatea, tot));
-            }
-
-            decimal iva = Math.Round(subtotal * ivaTasa, 2, MidpointRounding.AwayFromZero);
-            decimal guztira = subtotal + iva;
-
-            decimal itzulia = 0m;
-            bool pagoInformado = jasotakoa > 0m;
-            if (pagoInformado) itzulia = Math.Max(0m, jasotakoa - guztira);
-
-            var dokumentua = new PdfDocument();
+            var dokumentua = new PdfSharpCore.Pdf.PdfDocument();
             dokumentua.Info.Title = $"Ticket ID{zerbitzuId}";
 
             var orria = dokumentua.AddPage();
-            orria.Width = 220;
+            orria.Width = 240;  
+            orria.Height = 700;
 
-            int baseLines = 4 + 3 + 2 + 1 + lineas.Count + 5 + 3 + 2;
-            int extraWrap = lineas.Sum(l => (l.prod?.Length ?? 0) > 16 ? 1 : 0);
+            var marrazkia = PdfSharpCore.Drawing.XGraphics.FromPdfPage(orria);
 
-            double lineH = 11.5;
-            orria.Height = Math.Max(420, (baseLines + extraWrap) * lineH + 40);
+            var letraTitulua = new PdfSharpCore.Drawing.XFont("Segoe UI", 16, PdfSharpCore.Drawing.XFontStyle.Bold);
+            var letraSubTitulo = new PdfSharpCore.Drawing.XFont("Segoe UI", 11, PdfSharpCore.Drawing.XFontStyle.Regular);
+            var letraTestua = new PdfSharpCore.Drawing.XFont("Segoe UI", 10, PdfSharpCore.Drawing.XFontStyle.Regular);
+            var letraLodia = new PdfSharpCore.Drawing.XFont("Segoe UI", 10, PdfSharpCore.Drawing.XFontStyle.Bold);
 
-            var g = XGraphics.FromPdfPage(orria);
+            double y = 20;
+            double lineHeight = 14;
 
-            var fTitle = new XFont("Courier New", 12, XFontStyle.Bold);
-            var fText = new XFont("Courier New", 9, XFontStyle.Regular);
-            var fBold = new XFont("Courier New", 9, XFontStyle.Bold);
-            var fBig = new XFont("Courier New", 14, XFontStyle.Bold);
-
-            double y = 14;
-            double left = 10;
-            double width = orria.Width - 20;
-
-            void PrintLeft(string t, XFont f)
+            void Lerroa(string t, PdfSharpCore.Drawing.XFont f, bool center = false)
             {
-                g.DrawString(t, f, XBrushes.Black, new XRect(left, y, width, 12), XStringFormats.TopLeft);
-                y += 12;
+                var formatua = center ? PdfSharpCore.Drawing.XStringFormats.TopCenter : PdfSharpCore.Drawing.XStringFormats.TopLeft;
+
+                marrazkia.DrawString(
+                    t,
+                    f,
+                    PdfSharpCore.Drawing.XBrushes.Black,
+                    new PdfSharpCore.Drawing.XRect(10, y, orria.Width - 20, 20),
+                    formatua
+                );
+
+                y += lineHeight;
             }
 
-            void PrintCenter(string t, XFont f)
+            Lerroa("ABEJ JATETXEA", letraTitulua, true);
+            Lerroa("__________________________________", letraTestua);
+            Lerroa($"Ticket ID: {zerbitzuId}", letraSubTitulo);
+            Lerroa($"Data: {DateTime.Now:dd/MM/yyyy HH:mm}", letraSubTitulo);
+            y += 5;
+            Lerroa("------------------------------------------", letraTestua);
+
+            decimal guztira = 0m;
+
+            foreach (var it in itemak)
             {
-                g.DrawString(t, f, XBrushes.Black, new XRect(left, y, width, 12), XStringFormats.TopCenter);
-                y += 12;
+                var lerroGuztira = it.Kantitatea * it.PrezioaUnitatea;
+                guztira += lerroGuztira;
+
+                var izena = it.Izena.Length > 22 ? it.Izena.Substring(0, 22) : it.Izena;
+                Lerroa(izena, letraLodia);
+
+                Lerroa($"{it.Kantitatea} x {it.PrezioaUnitatea:0.00}€".PadRight(18) + $"{lerroGuztira:0.00}€", letraTestua);
+                y += 3;
             }
 
-            void Sep()
-            {
-                PrintLeft(new string('-', 32), fText);
-            }
+            Lerroa("------------------------------------------", letraTestua);
+            y += 3;
+            Lerroa($"GUZTIRA: {guztira:0.00} €", letraTitulua);
+            Lerroa("------------------------------------------", letraTestua);
+            y += 10;
 
-            PrintCenter(izenburua, fTitle);
-            PrintCenter(cif, fText);
-            PrintCenter(herria, fText);
-            PrintCenter(tel, fText);
-
-            y += 4;
-
-            PrintLeft($"Tiket: {zerbitzuId}", fText);
-            PrintLeft($"Data: {DateTime.Now:dd/MM/yyyy HH:mm}", fText);
-            PrintLeft($"Langilea: {langileId}", fText);
-
-            y += 2;
-            Sep();
-
-            int prodW = 16;
-            string HeaderRow() => $"{PadL("Kop", 3)} {PadR("Prod", prodW)} {PadL("Ud.", 6)} {PadL("Tot", 6)}";
-            PrintLeft(HeaderRow(), fBold);
-
-            foreach (var l in lineas)
-            {
-                var name = l.prod ?? "";
-                var first = name.Length > prodW ? name.Substring(0, prodW) : name;
-                var rest = name.Length > prodW ? name.Substring(prodW) : "";
-
-                string row =
-                    $"{PadL(l.kop.ToString(), 3)} " +
-                    $"{PadR(first, prodW)} " +
-                    $"{PadL(l.ud.ToString("0.00"), 6)} " +
-                    $"{PadL(l.tot.ToString("0.00"), 6)}";
-
-                PrintLeft(row, fText);
-
-                if (!string.IsNullOrWhiteSpace(rest))
-                {
-                    PrintLeft($"{new string(' ', 4)}{rest.Trim()}", fText);
-                }
-            }
-
-            y += 2;
-            Sep();
-
-            void PrintRightPair(string label, string value)
-            {
-                g.DrawString(label, fText, XBrushes.Black, new XRect(left, y, width, 12), XStringFormats.TopLeft);
-                g.DrawString(value, fText, XBrushes.Black, new XRect(left, y, width, 12), XStringFormats.TopRight);
-                y += 12;
-            }
-
-            PrintRightPair("Subtotala:", subtotal.ToString("0.00").Replace('.', ','));
-            PrintRightPair($"IVA ({(int)(ivaTasa * 100)}%):", iva.ToString("0.00").Replace('.', ','));
-
-            y += 2;
-
-            g.DrawString("GUZTIRA:", fBig, XBrushes.Black, new XRect(left, y, width * 0.55, 18), XStringFormats.TopLeft);
-            g.DrawString($"{guztira:0.00}".Replace('.', ',') + " €", fBig, XBrushes.Black, new XRect(left, y, width, 18), XStringFormats.TopRight);
-            y += 20;
-
-            Sep();
-
-            PrintLeft($"Modua: {modua}", fText);
-
-            if (pagoInformado)
-            {
-                PrintLeft($"Jasotakoa: {jasotakoa:0.00}".Replace('.', ','), fText);
-                PrintLeft($"Itzulia: {itzulia:0.00}".Replace('.', ','), fText);
-            }
-            else
-            {
-                PrintLeft("Jasotakoa: -", fText);
-                PrintLeft("Itzulia: -", fText);
-            }
-
-            y += 8;
-            PrintCenter("Eskerrik asko!", fBold);
+            Lerroa("Eskerrik asko!", letraLodia, true);
+            Lerroa("Bueltatu nahi duzunean 🙂", letraTestua, true);
 
             dokumentua.Save(bidea);
         }
 
-        private static string PadL(string s, int w)
+        private class TicketItem
         {
-            s ??= "";
-            if (s.Length >= w) return s.Substring(0, w);
-            return s.PadLeft(w);
+            public int PlateraId { get; set; }
+            public string Izena { get; set; } = "";
+            public int Kantitatea { get; set; }
+            public decimal PrezioaUnitatea { get; set; }
         }
-
-        private static string PadR(string s, int w)
-        {
-            s ??= "";
-            if (s.Length >= w) return s.Substring(0, w);
-            return s.PadRight(w);
-        }
-
     }
 }
