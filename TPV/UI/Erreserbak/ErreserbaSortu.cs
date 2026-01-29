@@ -222,7 +222,7 @@ namespace TPV
 
                 try
                 {
-                    var res = await client.PostAsJsonAsync("https://localhost:7236/api/Erreserbak", newRes);
+                    var res = await client.PostAsJsonAsync("http://192.168.1.117:5001/api/Erreserbak", newRes);
                     if (!res.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Errorea erreserban.");
@@ -247,7 +247,7 @@ namespace TPV
         {
             try
             {
-                mahaiaLista = await client.GetFromJsonAsync<List<Mahaiak>>("https://localhost:7236/api/Mahaiak");
+                mahaiaLista = await client.GetFromJsonAsync<List<Mahaiak>>("http://192.168.1.117:5001/api/Mahaiak");
             }
             catch
             {
@@ -259,7 +259,7 @@ namespace TPV
         {
             try
             {
-                erreserbaLista = await client.GetFromJsonAsync<List<Erreserbak>>("https://localhost:7236/api/Erreserbak");
+                erreserbaLista = await client.GetFromJsonAsync<List<Erreserbak>>("http://192.168.1.117:5001/api/Erreserbak");
             }
             catch
             {

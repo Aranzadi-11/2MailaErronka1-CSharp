@@ -12,7 +12,7 @@ namespace TPV
     public partial class Login : Form
     {
         private int saiakerak = 3;
-        private readonly string apiUrl = "https://localhost:7236/api/Langileak";
+        private readonly string apiUrl = "http://192.168.1.117:5001/api/Langileak";
 
         public Login()
         {

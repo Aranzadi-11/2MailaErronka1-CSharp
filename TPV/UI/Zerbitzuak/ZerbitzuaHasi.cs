@@ -30,7 +30,7 @@ namespace TPV.BISTAK
             {
                 string gaur = DateTime.Now.ToString("yyyy-MM-dd");
 
-                var denak = await http.GetFromJsonAsync<List<Erreserbak>>("https://localhost:7236/api/Erreserbak");
+                var denak = await http.GetFromJsonAsync<List<Erreserbak>>("http://192.168.1.117:5001/api/Erreserbak");
 
                 erreserbak = denak
                     .Where(e => e.ErreserbaData.HasValue && e.ErreserbaData.Value.ToString("yyyy-MM-dd") == gaur)

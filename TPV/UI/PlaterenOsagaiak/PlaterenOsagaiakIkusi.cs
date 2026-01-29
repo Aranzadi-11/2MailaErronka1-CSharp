@@ -15,7 +15,7 @@ namespace TPV.BISTAK
         private readonly HttpClient bezeroa;
         private readonly int zerbitzuaId;
 
-        private const string ApiOinarria = "https://localhost:7236";
+        private const string ApiOinarria = "http://192.168.1.117:5001";
         private const string ApiZerbitzuXehetasunak = ApiOinarria + "/api/ZerbitzuXehetasunak";
         private const string ApiPlaterak = ApiOinarria + "/api/Platerak";
         private const string ApiPlaterenOsagaiak = ApiOinarria + "/api/PlaterenOsagaiak";

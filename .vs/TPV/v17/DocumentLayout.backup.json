@@ -1,54 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\aranz\\source\\repos\\TPV\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\tpv.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\tpv.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|c:\\users\\aranz\\source\\repos\\tpv\\tpv\\ui\\erreserbak\\erreserbaeditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B8E67E7-5A8D-47ED-B853-1480EE71FED5}|TPV\\TPV.csproj|solutionrelative:tpv\\ui\\erreserbak\\erreserbaeditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TPV",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\TPV.csproj",
-              "RelativeDocumentMoniker": "TPV\\TPV.csproj",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\TPV.csproj",
-              "RelativeToolTip": "TPV\\TPV.csproj",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-27T12:15:17.984Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ErreserbaEditatu.cs",
-              "DocumentMoniker": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
-              "RelativeDocumentMoniker": "TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
-              "ToolTip": "C:\\Users\\aranz\\source\\repos\\TPV\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
-              "RelativeToolTip": "TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
-              "ViewState": "AgIAAAIBAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T14:44:16.337Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

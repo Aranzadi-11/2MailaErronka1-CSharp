@@ -14,7 +14,7 @@ namespace TPV.BISTAK
         private readonly HttpClient bezeroa;
         private List<Erreserbak> erreserbak;
         private readonly int langileId;
-        private const string ApiOinarria = "https://localhost:7236";
+        private const string ApiOinarria = "http://192.168.1.117:5001";
 
         public ErreserbaGestionatu(int langileIdPasatua)
         {

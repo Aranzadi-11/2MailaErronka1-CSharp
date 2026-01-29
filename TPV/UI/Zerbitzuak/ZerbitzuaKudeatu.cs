@@ -44,15 +44,15 @@ namespace TPV.BISTAK
 
         private async Task DenaKargatu()
         {
-            platerak = await bezeroa.GetFromJsonAsync<List<Platerak>>("https://localhost:7236/api/Platerak");
-            platerenosagaiak = await bezeroa.GetFromJsonAsync<List<MODELOAK.PlaterenOsagaiak>>("https://localhost:7236/api/PlaterenOsagaiak");
-            inbentarioa = await bezeroa.GetFromJsonAsync<List<Inbentarioa>>("https://localhost:7236/api/Inbentarioa");
-            kategoriak = await bezeroa.GetFromJsonAsync<List<Kategoria>>("https://localhost:7236/api/Kategoria");
+            platerak = await bezeroa.GetFromJsonAsync<List<Platerak>>("http://192.168.1.117:5001/api/Platerak");
+            platerenosagaiak = await bezeroa.GetFromJsonAsync<List<MODELOAK.PlaterenOsagaiak>>("http://192.168.1.117:5001/api/PlaterenOsagaiak");
+            inbentarioa = await bezeroa.GetFromJsonAsync<List<Inbentarioa>>("http://192.168.1.117:5001/api/Inbentarioa");
+            kategoriak = await bezeroa.GetFromJsonAsync<List<Kategoria>>("http://192.168.1.117:5001/api/Kategoria");
 
             try
             {
                 var aurrekoak = await bezeroa.GetFromJsonAsync<List<AurrekoPlatera>>(
-                    $"https://localhost:7236/api/Zerbitzuak/erreserba/{erreserbaId}/platerak"
+                    $"http://192.168.1.117:5001/api/Zerbitzuak/erreserba/{erreserbaId}/platerak"
                 );
 
                 foreach (var p in aurrekoak)
@@ -187,7 +187,7 @@ namespace TPV.BISTAK
 
         private async Task StockEgiaztatu()
         {
-            inbentarioa = await bezeroa.GetFromJsonAsync<List<Inbentarioa>>("https://localhost:7236/api/Inbentarioa");
+            inbentarioa = await bezeroa.GetFromJsonAsync<List<Inbentarioa>>("http://192.168.1.117:5001/api/Inbentarioa");
 
             foreach (var p in platerak)
             {
@@ -245,7 +245,7 @@ namespace TPV.BISTAK
             };
 
             await bezeroa.PostAsJsonAsync(
-                "https://localhost:7236/api/Zerbitzuak/egin",
+                "http://192.168.1.117:5001/api/Zerbitzuak/egin",
                 eskaria
             );
 
