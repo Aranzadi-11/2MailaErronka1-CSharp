@@ -299,7 +299,7 @@ namespace TPV.BISTAK
             y += 10;
 
             Lerroa("Eskerrik asko!", letraLodia, true);
-            Lerroa("Bueltatu nahi duzunean 🙂", letraTestua, true);
+            Lerroa("Bueltatu nahi duzunean", letraTestua, true);
 
             dokumentua.Save(bidea);
         }
